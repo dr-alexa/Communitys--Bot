@@ -1,0 +1,30 @@
+volumes:
+  pgdata:
+    driver: local
+
+services:
+  postgres:
+    restart: unless-stopped
+    image: postgres:18.3-trixie
+    env_file: .env
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+  adminer:
+    restart: unless-stopped
+    image: adminer
+    depends_on:
+      - postgres
+    ports:
+      - 8080:8080
+
+  bot:
+    restart: unless-stopped
+    build:
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/app
+    env_file: .env
+    tty: true
+    stdin_open: true
+    command: uv run bot.py
