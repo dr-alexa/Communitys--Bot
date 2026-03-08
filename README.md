@@ -2,6 +2,10 @@
 Этот чат-бот будет создан мной и моими подписчиками. Функционал (каждый может добавить свою лепту :))
 
 # Devops
+## env variables
+create env example before starting
+`cp .env-example .env`
+
 ## uv
 install uv
 `curl -LsSf https://astral.sh/uv/install.sh | sh`

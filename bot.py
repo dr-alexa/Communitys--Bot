@@ -37,6 +37,9 @@ async def cmd_start(message: types.Message):
         # message_effect_id="5046509860389126442",
     )
 
+
+@dp.message(Command("pg"))
+async def cmd_pg(message: types.Message):
     pool = await get_pool(conninfo=POSTGRES_DSN)
     async with pool.connection() as conn:
         async with conn.cursor(row_factory=dict_row) as cursor:
