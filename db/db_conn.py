@@ -1,9 +1,10 @@
 from psycopg_pool import AsyncConnectionPool
 
+# todo: прописать в самой функции, или прокинуть через settings
 DB_POOL = None
 DB_POOL_OPEN = False
 
-
+# todo: лучше разделить на получение pool и на генератор сессий
 async def get_pool(
     conninfo,
     min_size=2,
